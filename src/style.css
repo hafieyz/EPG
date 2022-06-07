@@ -1,0 +1,309 @@
+* {
+  box-sizing: border-box;
+  color: #ccc;
+  text-align: center;
+  transition: all 0.2s linear;
+}
+
+body {
+  margin: 0;
+  background-color: #44386a;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #28213e;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.light {
+  background-color: #44386a;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.logo-main {
+  max-width: 10rem;
+  flex-grow: 1;
+  display: none;
+}
+
+.headers,
+.rows {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 4rem;
+}
+
+.rows {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.rows::-webkit-scrollbar {
+  display: none;
+}
+
+.chart {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 5rem 1fr;
+}
+
+.chart-row {
+  position: relative;
+  display: grid;
+  background-color: #28213e;
+  border-radius: 8px;
+}
+
+.chart-period {
+  grid-template-columns: repeat(24, 20rem);
+}
+
+.chart-row-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #44386a;
+  border-radius: 8px 0 0 8px;
+}
+
+.chart-row-item-light {
+  background-color: #28213e;
+}
+
+.hour {
+  border: 1px solid #44386a;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.hour-light {
+  background-color: #6e5ea0;
+}
+
+.hour > span {
+  transform: translateX(-50%);
+}
+
+.line {
+  border-left: 2px solid #e841af;
+  position: absolute;
+  height: 100%;
+}
+
+.channel-logo {
+  height: 1rem;
+}
+
+.programmes {
+  display: flex;
+}
+
+.programme {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #44386a;
+}
+
+.programme:active,
+.programme:hover {
+  background-color: #e841af;
+}
+
+.programme:focus-visible {
+  outline: 0;
+  border: 1px solid #e841af;
+}
+
+.programme-light {
+  background-color: #6e5ea0;
+}
+
+.programme-live {
+  background-color: #44386a;
+}
+
+.programme-live:hover {
+  z-index: 1;
+}
+
+@media all and (min-width: 699px) {
+  .main {
+    padding: 2rem;
+  }
+  .chart {
+    grid-template-columns: 8rem 1fr;
+  }
+  .channel-logo {
+    height: 2rem;
+  }
+  .logo-main {
+    display: block;
+  }
+  .logo-main-small {
+    display: none;
+  }
+  .headers,
+  .rows {
+    grid-auto-rows: 5rem;
+  }
+}
+
+.search-input {
+  background-color: #44386a;
+  text-align: left;
+  border: 0;
+  border-radius: 8px;
+  padding: 1rem 0.5rem;
+}
+
+.search-input-light {
+  background-color: #28213e;
+}
+
+.switch {
+  display: flex;
+  justify-content: end;
+}
+
+.search-input,
+.switch {
+  width: 20rem;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  width: 50px;
+  height: 26px;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+}
+
+.label {
+  background-color: #44386a;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-light {
+  background-color: #28213e;
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
+
+.search-input:focus,
+.checkbox:focus {
+  outline: 1px solid #e841af;
+}
+
+.live {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: #e841af;
+  color: #28213e;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+}
+
+.live:hover {
+  transform: scale(1.1);
+}
+
+#modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  background-color: #44386a;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 8px;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.button-modal {
+  background-color: #e841af;
+  color: #28213e;
+  border: 0;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+p {
+  text-align: justify;
+}
