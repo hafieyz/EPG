@@ -16,4 +16,13 @@ const getDateStartInMillis = (date) => new Date(date).setHours(0, 0, 0, 0);
 
 const getTimeInMillis = (date) => new Date(date).getTime();
 
-export { convertMillisToMins, formatTimeSlot, getCurrentTimeInMillis, getDateStartInMillis, getTimeInMillis };
+const formatStr = (str) => str.toLowerCase().replace(/\s+/g, '');
+
+export {
+  convertMillisToMins,
+  formatStr,
+  formatTimeSlot,
+  getCurrentTimeInMillis,
+  getDateStartInMillis,
+  getTimeInMillis,
+};
