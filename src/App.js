@@ -34,7 +34,7 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:1337/epg')
+    fetch('https://raw.githubusercontent.com/AqFad2811/epg/main/epg.xml'')
       .then((res) => res.json())
       .then(({ channels }) => setChannels(channels))
       .catch((error) => setError(error))
